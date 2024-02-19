@@ -11,12 +11,13 @@ let refreshTokens = [ ]
 
 app.post("/token", (req,res) => {
     const refreshToken = req.body.token
-    console.log("Received refresh token:", refreshToken)
+    console.log("Received refresh token")
     if (!refreshToken) {
         console.log("No refresh token provided")
         return res.sendStatus(401)
     }
     if(!refreshTokens.includes(refreshToken)){
+        console.log("Invalid Token")
         return res.sendStatus(403)
     }
     else{
