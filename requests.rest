@@ -1,0 +1,18 @@
+GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWxlZW5hIiwiaWF0IjoxNzA4MzMwMzAzLCJleHAiOjE3MDgzMzAzMzN9.0FnwQI91SCclp9o4ktonPHyrJM7WJsyfjMMCfZHo-aI
+
+###
+POST http://localhost:6000/users
+Content-Type: application/json
+
+{
+    "username": "Aleena"
+}
+
+###
+POST http://localhost:6000/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSGFyaSIsImlhdCI6MTcwODMzMDE5M30.Lh6exWx0zwu6w5E7koVMlHX2dKadz5qsJtrDYfbNX7I"
+}
