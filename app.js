@@ -19,29 +19,33 @@ const users = [
 ]
 
 app.get("/users", authenticateToken, (req,res) => {
-    res.json(users.filter( (user) => {
-        return user.username === req.user.name
-    } ))
+    const filteredUsers = users.filter(user => user.username === req.user.name);
+
+    if (filteredUsers.length === 0) {
+        console.log("User not found");
+        return res.sendStatus(404);
+    }
+
+    res.json(filteredUsers);
 })
 
 
 // Middleware for token Authentication
 function authenticateToken(req,res,next) {
-    console.log("Authenticating token...");
     const authHeader = req.headers["authorization"]
     const token = authHeader && authHeader.split(" ")[1]
     if(token == null){
-        console.log("Token not found");
+        console.log("Token not found")
         res.sendStatus(401)
     }
     else{
         jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err,user) => {
             if(err){
-                console.error("Token verification failed:", err.message)
+                console.log("Token verification failed")
                 return res.sendStatus(403)
             }
             else{
-                console.log("Token verified successfully");
+                console.log("Token verified successfully")
                 req.user = user
                 next()
             }
