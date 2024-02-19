@@ -13,6 +13,10 @@ const users = [
         email: "harigovind@gmail.com"
     },
     {
+        username: "Ageesh",
+        email: "ageesh@ghasham.com"
+    },
+    {
         username: "Anirudh",
         email: "Anirudh@gmail.com"
     }
