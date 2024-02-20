@@ -34,7 +34,14 @@ app.post("/token", (req,res) => {
     }
 })
 
-app.post("/users", (req,res) =>{
+app.delete("/logout", (req,res) => {
+    refreshTokens = refreshTokens.filter((token) => {
+        return token !== req.body.token
+    })
+    res.json("User token Deleted")
+})
+
+app.post("/login", (req,res) =>{
     const username = req.body.username
     const user = { name: username }
     const accessToken = generateAccessToken(user)
