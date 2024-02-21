@@ -48,7 +48,6 @@ app.post("/login", (req,res) =>{
     const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
     refreshTokens.push(refreshToken)
     res.json({ accessToken: accessToken, refreshToken: refreshToken })
-    
 })
 
 // Middleware for token Authentication
